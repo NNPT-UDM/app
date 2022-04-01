@@ -1,35 +1,30 @@
 import React from "react";
-
+import logo from "../../assets/images/logo.webp";
 Footer.propTypes = {};
 
 function Footer(props) {
   return (
-    <footer class="footer-area">
-      <div class="footer-main">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-6 col-lg-4">
-              <div class="widget-item">
-                <div class="widget-about">
-                  <a class="widget-logo" href="index.html">
-                    <img
-                      src="src/assets/images/logo.webp"
-                      width="95"
-                      height="68"
-                      alt="Logo"
-                    />
+    <footer className="footer-area">
+      <div className="footer-main">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-6 col-lg-4">
+              <div className="widget-item">
+                <div className="widget-about">
+                  <a className="widget-logo" href="index.html">
+                    <img src={logo} width="95" height="68" alt="Logo" />
                   </a>
-                  <p class="desc">
+                  <p className="desc">
                     Lorem Ipsum is simply dummy text of the printing and
                     typesetting industry. Lorem Ipsum has been.
                   </p>
                 </div>
               </div>
             </div>
-            <div class="col-md-6 col-lg-5 mt-md-0 mt-9">
-              <div class="widget-item">
-                <h4 class="widget-title">Information</h4>
-                <ul class="widget-nav">
+            <div className="col-md-6 col-lg-5 mt-md-0 mt-9">
+              <div className="widget-item">
+                <h4 className="widget-title">Information</h4>
+                <ul className="widget-nav">
                   <li>
                     <a href="blog.html">Blog</a>
                   </li>
@@ -57,26 +52,26 @@ function Footer(props) {
                 </ul>
               </div>
             </div>
-            <div class="col-md-6 col-lg-3 mt-lg-0 mt-6">
-              <div class="widget-item">
-                <h4 class="widget-title">Social Info</h4>
-                <div class="widget-social">
+            <div className="col-md-6 col-lg-3 mt-lg-0 mt-6">
+              <div className="widget-item">
+                <h4 className="widget-title">Social Info</h4>
+                <div className="widget-social">
                   <a href="https://twitter.com/" target="_blank" rel="noopener">
-                    <i class="fa fa-twitter"></i>
+                    <i className="fa fa-twitter"></i>
                   </a>
                   <a
                     href="https://www.facebook.com/"
                     target="_blank"
                     rel="noopener"
                   >
-                    <i class="fa fa-facebook"></i>
+                    <i className="fa fa-facebook"></i>
                   </a>
                   <a
                     href="https://www.pinterest.com/"
                     target="_blank"
                     rel="noopener"
                   >
-                    <i class="fa fa-pinterest-p"></i>
+                    <i className="fa fa-pinterest-p"></i>
                   </a>
                 </div>
               </div>
@@ -85,11 +80,11 @@ function Footer(props) {
         </div>
       </div>
 
-      <div class="footer-bottom">
-        <div class="container pt-0 pb-0">
-          <div class="footer-bottom-content">
-            <p class="copyright">
-              © 2022 Brancy. Made with <i class="fa fa-heart"></i> by{" "}
+      <div className="footer-bottom">
+        <div className="container pt-0 pb-0">
+          <div className="footer-bottom-content">
+            <p className="copyright">
+              © 2022 Brancy. Made with <i className="fa fa-heart"></i> by{" "}
               <a
                 target="_blank"
                 href="https://themeforest.net/user/codecarnival"

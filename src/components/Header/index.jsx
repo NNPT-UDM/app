@@ -1,47 +1,50 @@
+import classNames from "classnames";
 import React from "react";
-
+import { Link } from "react-router-dom";
+import logo from "../../assets/images/logo.webp";
+import usePathname from "../../hooks/usePathname";
 Header.propTypes = {};
 
 function Header(props) {
+  const pathname = usePathname();
+
   return (
-    <header class="header-area sticky-header header-transparent">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-5 col-lg-2 col-xl-1">
-            <div class="header-logo">
-              <a href="index.html">
+    <header
+      className={classNames(
+        { "header-transparent": pathname === "/" },
+        "header-area",
+        "sticky-header"
+      )}
+    >
+      <div className="container">
+        <div className="row align-items-center">
+          <div className="col-5 col-lg-2 col-xl-1">
+            <div className="header-logo">
+              <Link to="/l">
                 <img
-                  class="logo-main"
-                  src="src/assets/images/logo.webp"
+                  className="logo-main"
+                  src={logo}
                   width="95"
                   height="68"
                   alt="Logo"
                 />
-              </a>
+              </Link>
             </div>
           </div>
-          <div class="col-lg-7 col-xl-7 d-none d-lg-block">
-            <div class="header-navigation ps-7">
-              <ul class="main-nav justify-content-start">
-                <li class="has-submenu">
-                  <a href="index.html">home</a>
-                  <ul class="submenu-nav">
-                    <li>
-                      <a href="index.html">Home One</a>
-                    </li>
-                    <li>
-                      <a href="index-two.html">Home Two</a>
-                    </li>
-                  </ul>
+          <div className="col-lg-7 col-xl-7 d-none d-lg-block">
+            <div className="header-navigation ps-7">
+              <ul className="main-nav justify-content-start">
+                <li className="has-submenu">
+                  <Link to="/">Home</Link>
                 </li>
                 <li>
-                  <a href="about-us.html">about</a>
+                  <Link to="/about">About</Link>
                 </li>
-                <li class="has-submenu position-static">
+                <li className="has-submenu position-static">
                   <a href="product.html">shop</a>
-                  <ul class="submenu-nav-mega">
+                  <ul className="submenu-nav-mega">
                     <li>
-                      <a href="#/" class="mega-title">
+                      <a href="#/" className="mega-title">
                         Shop Layout
                       </a>
                       <ul>
@@ -64,7 +67,7 @@ function Header(props) {
                       </ul>
                     </li>
                     <li>
-                      <a href="#/" class="mega-title">
+                      <a href="#/" className="mega-title">
                         Single Product
                       </a>
                       <ul>
@@ -91,7 +94,7 @@ function Header(props) {
                       </ul>
                     </li>
                     <li>
-                      <a href="#/" class="mega-title">
+                      <a href="#/" className="mega-title">
                         Others Pages
                       </a>
                       <ul>
@@ -111,12 +114,12 @@ function Header(props) {
                     </li>
                   </ul>
                 </li>
-                <li class="has-submenu">
+                <li className="has-submenu">
                   <a href="blog.html">Blog</a>
-                  <ul class="submenu-nav">
-                    <li class="has-submenu">
+                  <ul className="submenu-nav">
+                    <li className="has-submenu">
                       <a href="#/">Blog Layout</a>
-                      <ul class="submenu-nav">
+                      <ul className="submenu-nav">
                         <li>
                           <a href="blog.html">Blog Grid</a>
                         </li>
@@ -135,19 +138,8 @@ function Header(props) {
                     </li>
                   </ul>
                 </li>
-                <li class="has-submenu">
-                  <a href="account-login.html">Pages</a>
-                  <ul class="submenu-nav">
-                    <li>
-                      <a href="account-login.html">My Account</a>
-                    </li>
-                    <li>
-                      <a href="faq.html">Frequently Questions</a>
-                    </li>
-                    <li>
-                      <a href="page-not-found.html">Page Not Found</a>
-                    </li>
-                  </ul>
+                <li>
+                  <Link to="/faq">FAQ</Link>
                 </li>
                 <li>
                   <a href="contact.html">Contact</a>
@@ -155,17 +147,17 @@ function Header(props) {
               </ul>
             </div>
           </div>
-          <div class="col-7 col-lg-3 col-xl-4">
-            <div class="header-action justify-content-end">
+          <div className="col-7 col-lg-3 col-xl-4">
+            <div className="header-action justify-content-end">
               <button
                 style={{ fontSize: 0 }}
-                class="header-action-btn ms-0"
+                className="header-action-btn ms-0"
                 type="button"
                 data-bs-toggle="offcanvas"
                 data-bs-target="#AsideOffcanvasSearch"
                 aria-controls="AsideOffcanvasSearch"
               >
-                <span class="icon">
+                <span className="icon">
                   <svg
                     width="30"
                     height="30"
@@ -175,7 +167,7 @@ function Header(props) {
                     xmlnsXlink="http://www.w3.org/1999/xlink"
                   >
                     <rect
-                      class="icon-rect"
+                      className="icon-rect"
                       width="30"
                       height="30"
                       fill="url(#pattern1)"
@@ -205,13 +197,13 @@ function Header(props) {
 
               <button
                 style={{ fontSize: 0 }}
-                class="header-action-btn"
+                className="header-action-btn"
                 type="button"
                 data-bs-toggle="offcanvas"
                 data-bs-target="#AsideOffcanvasCart"
                 aria-controls="AsideOffcanvasCart"
               >
-                <span class="icon">
+                <span className="icon">
                   <svg
                     width="30"
                     height="30"
@@ -221,7 +213,7 @@ function Header(props) {
                     xmlnsXlink="http://www.w3.org/1999/xlink"
                   >
                     <rect
-                      class="icon-rect"
+                      className="icon-rect"
                       width="30"
                       height="30"
                       fill="url(#pattern2)"
@@ -249,8 +241,8 @@ function Header(props) {
                 </span>
               </button>
 
-              <a class="header-action-btn" href="account-login.html">
-                <span class="icon">
+              <Link className="header-action-btn" to="/login">
+                <span className="icon">
                   <svg
                     width="30"
                     height="30"
@@ -260,7 +252,7 @@ function Header(props) {
                     xmlnsXlink="http://www.w3.org/1999/xlink"
                   >
                     <rect
-                      class="icon-rect"
+                      className="icon-rect"
                       width="30"
                       height="30"
                       fill="url(#pattern3)"
@@ -286,10 +278,10 @@ function Header(props) {
                     </defs>
                   </svg>
                 </span>
-              </a>
+              </Link>
 
               <button
-                class="header-menu-btn"
+                className="header-menu-btn"
                 type="button"
                 data-bs-toggle="offcanvas"
                 data-bs-target="#AsideOffcanvasMenu"
