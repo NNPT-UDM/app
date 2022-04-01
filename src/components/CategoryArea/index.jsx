@@ -27,7 +27,7 @@ export default function CategoryArea() {
             <a
               href="product.html"
               className="product-category-item"
-              data-bg-color="#FFEDB4"
+              style={{ backgroundColor: "#FFEDB4" }}
             >
               <img
                 className="icon"
@@ -43,7 +43,7 @@ export default function CategoryArea() {
             <a
               href="product.html"
               className="product-category-item"
-              data-bg-color="#DFE4FF"
+              style={{ backgroundColor: "#DFE4FF" }}
             >
               <img
                 className="icon"
@@ -59,7 +59,7 @@ export default function CategoryArea() {
             <a
               href="product.html"
               className="product-category-item"
-              data-bg-color="#FFEACC"
+              style={{ backgroundColor: "#FFEACC" }}
             >
               <img
                 className="icon"
@@ -69,7 +69,7 @@ export default function CategoryArea() {
                 alt="Image-HasTech"
               />
               <h3 className="title">Face skin</h3>
-              <span data-bg-color="#835BF4" className="flag-new">
+              <span style={{ backgroundColor: "#835BF4" }} className="flag-new">
                 sale
               </span>
             </a>
@@ -78,7 +78,7 @@ export default function CategoryArea() {
             <a
               href="product.html"
               className="product-category-item"
-              data-bg-color="#FFDAE0"
+              style={{ backgroundColor: "#FFDAE0" }}
             >
               <img
                 className="icon"
@@ -94,7 +94,7 @@ export default function CategoryArea() {
             <a
               href="product.html"
               className="product-category-item"
-              data-bg-color="#FFF3DA"
+              style={{ backgroundColor: "#FFF3DA" }}
             >
               <img
                 className="icon"

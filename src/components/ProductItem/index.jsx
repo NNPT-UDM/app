@@ -12,27 +12,11 @@ export default function ProductItem() {
           <div className="product-action">
             <button
               type="button"
-              className="product-action-btn action-btn-quick-view"
-              data-bs-toggle="modal"
-              data-bs-target="#action-QuickViewModal"
-            >
-              <i className="fa fa-expand"></i>
-            </button>
-            <button
-              type="button"
               className="product-action-btn action-btn-cart"
               data-bs-toggle="modal"
               data-bs-target="#action-CartAddModal"
             >
               <span>Add to cart</span>
-            </button>
-            <button
-              type="button"
-              className="product-action-btn action-btn-wishlist"
-              data-bs-toggle="modal"
-              data-bs-target="#action-WishlistModal"
-            >
-              <i className="fa fa-heart-o"></i>
             </button>
           </div>
         </div>
@@ -56,22 +40,6 @@ export default function ProductItem() {
           </div>
         </div>
         <div className="product-action-bottom">
-          <button
-            type="button"
-            className="product-action-btn action-btn-quick-view"
-            data-bs-toggle="modal"
-            data-bs-target="#action-QuickViewModal"
-          >
-            <i className="fa fa-expand"></i>
-          </button>
-          <button
-            type="button"
-            className="product-action-btn action-btn-wishlist"
-            data-bs-toggle="modal"
-            data-bs-target="#action-WishlistModal"
-          >
-            <i className="fa fa-heart-o"></i>
-          </button>
           <button
             type="button"
             className="product-action-btn action-btn-cart"

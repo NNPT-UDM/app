@@ -11,7 +11,10 @@ function Header(props) {
   return (
     <header
       className={classNames(
-        { "header-transparent": pathname === "/" },
+        {
+          "header-transparent":
+            pathname === "/" || pathname === "page-not-found",
+        },
         "header-area",
         "sticky-header"
       )}
