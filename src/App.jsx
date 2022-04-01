@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import About from "./pages/About";
+import Contact from "./pages/Contact";
 import FAQ from "./pages/FAQ";
 import ForgotPassword from "./pages/ForgotPassword";
 import Home from "./pages/Home";
@@ -13,6 +14,7 @@ function App() {
       <Switch>
         <Route path="/forgot-password" component={ForgotPassword} exact />
         <Route path="/faq" component={FAQ} exact />
+        <Route path="/contact" component={Contact} exact />
         {/* <Route path="/forgot-password/:id" component={ResetPassword} /> */}
         <Route path="/login" component={Login} exact />
         <Route path="/about" component={About} exact />
