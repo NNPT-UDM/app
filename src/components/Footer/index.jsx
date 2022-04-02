@@ -1,8 +1,16 @@
+import classNames from "classnames";
 import React from "react";
+import { useSelector } from "react-redux";
 import logo from "../../assets/images/logo.webp";
+import usePathname from "../../hooks/usePathname";
 Footer.propTypes = {};
 
 function Footer(props) {
+  const { cartItems = [] } = useSelector((state) => state.cart);
+  const pathname = usePathname();
+  if(pathname === '/cart' && cartItems.length ===0){
+    return <></>
+  }
   return (
     <footer className="footer-area">
       <div className="footer-main">

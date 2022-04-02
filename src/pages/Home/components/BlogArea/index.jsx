@@ -1,5 +1,7 @@
 import React from "react";
-import BlogImg from "../../../../assets/images/blog/1.webp";
+import BlogImg1 from "../../../../assets/images/blog/1.webp";
+import BlogImg2 from "../../../../assets/images/blog/2.webp";
+import BlogImg3 from "../../../../assets/images/blog/3.webp";
 export default function BlogArea() {
   return (
     <section className="section-space">
@@ -20,7 +22,7 @@ export default function BlogArea() {
             <div className="post-item">
               <a href="blog-details.html" className="thumb">
                 <img
-                  src={BlogImg}
+                  src={BlogImg1}
                   width="370"
                   height="320"
                   alt="Image-HasTech"
@@ -48,7 +50,7 @@ export default function BlogArea() {
             <div className="post-item">
               <a href="blog-details.html" className="thumb">
                 <img
-                  src={BlogImg}
+                  src={BlogImg2}
                   width="370"
                   height="320"
                   alt="Image-HasTech"
@@ -80,7 +82,7 @@ export default function BlogArea() {
             <div className="post-item">
               <a href="blog-details.html" className="thumb">
                 <img
-                  src={BlogImg}
+                  src={BlogImg3}
                   width="370"
                   height="320"
                   alt="Image-HasTech"
