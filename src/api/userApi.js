@@ -1,5 +1,5 @@
-import StorageKeys from 'constants/storage-keys';
 import Cookies from 'js-cookie';
+import StorageKeys from '../constants/storage-keys';
 import axiosClient from './axiosClient';
 function getLocalToken() {
   const token = Cookies.get(StorageKeys.TOKEN);

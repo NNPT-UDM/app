@@ -1,15 +1,15 @@
-import classNames from "classnames";
-import React from "react";
-import { useSelector } from "react-redux";
-import logo from "../../assets/images/logo.webp";
-import usePathname from "../../hooks/usePathname";
+import classNames from 'classnames';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import logo from '../../assets/images/logo.webp';
+import usePathname from '../../hooks/usePathname';
 Footer.propTypes = {};
 
 function Footer(props) {
   const { cartItems = [] } = useSelector((state) => state.cart);
   const pathname = usePathname();
-  if(pathname === '/cart' && cartItems.length ===0){
-    return <></>
+  if (pathname === '/cart' && cartItems.length === 0) {
+    return <></>;
   }
   return (
     <footer className="footer-area">
@@ -23,8 +23,8 @@ function Footer(props) {
                     <img src={logo} width="95" height="68" alt="Logo" />
                   </a>
                   <p className="desc">
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been.
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                    been.
                   </p>
                 </div>
               </div>
@@ -67,18 +67,10 @@ function Footer(props) {
                   <a href="https://twitter.com/" target="_blank" rel="noopener">
                     <i className="fa fa-twitter"></i>
                   </a>
-                  <a
-                    href="https://www.facebook.com/"
-                    target="_blank"
-                    rel="noopener"
-                  >
+                  <a href="https://www.facebook.com/" target="_blank" rel="noopener">
                     <i className="fa fa-facebook"></i>
                   </a>
-                  <a
-                    href="https://www.pinterest.com/"
-                    target="_blank"
-                    rel="noopener"
-                  >
+                  <a href="https://www.pinterest.com/" target="_blank" rel="noopener">
                     <i className="fa fa-pinterest-p"></i>
                   </a>
                 </div>
@@ -92,11 +84,8 @@ function Footer(props) {
         <div className="container pt-0 pb-0">
           <div className="footer-bottom-content">
             <p className="copyright">
-              © 2022 Brancy. Made with <i className="fa fa-heart"></i> by{" "}
-              <a
-                target="_blank"
-                href="https://themeforest.net/user/codecarnival"
-              >
+              © 2022 Brancy. Made with <i className="fa fa-heart"></i> by{' '}
+              <a target="_blank" href="https://themeforest.net/user/codecarnival">
                 Codecarnival.
               </a>
             </p>

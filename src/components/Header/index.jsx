@@ -1,39 +1,34 @@
-import classNames from "classnames";
-import React from "react";
-import { Link } from "react-router-dom";
-import logo from "../../assets/images/logo.webp";
-import usePathname from "../../hooks/usePathname";
-import AsideSearch from "../AsideSearch";
-import NavMobile from "../NavMobile";
+import classNames from 'classnames';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import logo from '../../assets/images/logo.webp';
+import usePathname from '../../hooks/usePathname';
+import AsideSearch from '../AsideSearch';
+import NavMobile from '../NavMobile';
+import Cookies from 'js-cookie';
+import StorageKeys from '../../constants/storage-keys';
 Header.propTypes = {};
 
 function Header(props) {
   const pathname = usePathname();
-
+  const isLogin = Cookies.get(StorageKeys.TOKEN) ? true : false;
   return (
     <>
       <header
         className={classNames(
           {
-            "header-transparent":
-              pathname === "/" || pathname === "page-not-found",
+            'header-transparent': pathname === '/' || pathname === 'page-not-found',
           },
-          "header-area",
-          "sticky-header"
+          'header-area',
+          'sticky-header'
         )}
       >
         <div className="container">
           <div className="row align-items-center">
             <div className="col-5 col-lg-2 col-xl-1">
               <div className="header-logo">
-                <Link to="/l">
-                  <img
-                    className="logo-main"
-                    src={logo}
-                    width="95"
-                    height="68"
-                    alt="Logo"
-                  />
+                <Link to="/">
+                  <img className="logo-main" src={logo} width="95" height="68" alt="Logo" />
                 </Link>
               </div>
             </div>
@@ -58,19 +53,13 @@ function Header(props) {
                             <a href="product.html">Shop 3 Column</a>
                           </li>
                           <li>
-                            <a href="product-four-columns.html">
-                              Shop 4 Column
-                            </a>
+                            <a href="product-four-columns.html">Shop 4 Column</a>
                           </li>
                           <li>
-                            <a href="product-left-sidebar.html">
-                              Shop Left Sidebar
-                            </a>
+                            <a href="product-left-sidebar.html">Shop Left Sidebar</a>
                           </li>
                           <li>
-                            <a href="product-right-sidebar.html">
-                              Shop Right Sidebar
-                            </a>
+                            <a href="product-right-sidebar.html">Shop Right Sidebar</a>
                           </li>
                         </ul>
                       </li>
@@ -80,24 +69,16 @@ function Header(props) {
                         </a>
                         <ul>
                           <li>
-                            <a href="product-details-normal.html">
-                              Single Product Normal
-                            </a>
+                            <a href="product-details-normal.html">Single Product Normal</a>
                           </li>
                           <li>
-                            <a href="product-details.html">
-                              Single Product Variable
-                            </a>
+                            <a href="product-details.html">Single Product Variable</a>
                           </li>
                           <li>
-                            <a href="product-details-group.html">
-                              Single Product Group
-                            </a>
+                            <a href="product-details-group.html">Single Product Group</a>
                           </li>
                           <li>
-                            <a href="product-details-affiliate.html">
-                              Single Product Affiliate
-                            </a>
+                            <a href="product-details-affiliate.html">Single Product Affiliate</a>
                           </li>
                         </ul>
                       </li>
@@ -132,14 +113,10 @@ function Header(props) {
                             <a href="blog.html">Blog Grid</a>
                           </li>
                           <li>
-                            <a href="blog-left-sidebar.html">
-                              Blog Left Sidebar
-                            </a>
+                            <a href="blog-left-sidebar.html">Blog Left Sidebar</a>
                           </li>
                           <li>
-                            <a href="blog-right-sidebar.html">
-                              Blog Right Sidebar
-                            </a>
+                            <a href="blog-right-sidebar.html">Blog Right Sidebar</a>
                           </li>
                         </ul>
                       </li>
@@ -176,23 +153,10 @@ function Header(props) {
                       xmlns="http://www.w3.org/2000/svg"
                       xmlnsXlink="http://www.w3.org/1999/xlink"
                     >
-                      <rect
-                        className="icon-rect"
-                        width="30"
-                        height="30"
-                        fill="url(#pattern1)"
-                      />
+                      <rect className="icon-rect" width="30" height="30" fill="url(#pattern1)" />
                       <defs>
-                        <pattern
-                          id="pattern1"
-                          patternContentUnits="objectBoundingBox"
-                          width="1"
-                          height="1"
-                        >
-                          <use
-                            xlinkHref="#image0_504:11"
-                            transform="scale(0.0333333)"
-                          />
+                        <pattern id="pattern1" patternContentUnits="objectBoundingBox" width="1" height="1">
+                          <use xlinkHref="#image0_504:11" transform="scale(0.0333333)" />
                         </pattern>
                         <image
                           id="image0_504:11"
@@ -222,23 +186,10 @@ function Header(props) {
                       xmlns="http://www.w3.org/2000/svg"
                       xmlnsXlink="http://www.w3.org/1999/xlink"
                     >
-                      <rect
-                        className="icon-rect"
-                        width="30"
-                        height="30"
-                        fill="url(#pattern2)"
-                      />
+                      <rect className="icon-rect" width="30" height="30" fill="url(#pattern2)" />
                       <defs>
-                        <pattern
-                          id="pattern2"
-                          patternContentUnits="objectBoundingBox"
-                          width="1"
-                          height="1"
-                        >
-                          <use
-                            xlinkHref="#image0_504:9"
-                            transform="scale(0.0333333)"
-                          />
+                        <pattern id="pattern2" patternContentUnits="objectBoundingBox" width="1" height="1">
+                          <use xlinkHref="#image0_504:9" transform="scale(0.0333333)" />
                         </pattern>
                         <image
                           id="image0_504:9"
@@ -251,7 +202,7 @@ function Header(props) {
                   </span>
                 </button>
 
-                <Link className="header-action-btn" to="/login">
+                <Link className="header-action-btn" to={isLogin ? '/profile' : '/login'}>
                   <span className="icon">
                     <svg
                       width="30"
@@ -261,23 +212,10 @@ function Header(props) {
                       xmlns="http://www.w3.org/2000/svg"
                       xmlnsXlink="http://www.w3.org/1999/xlink"
                     >
-                      <rect
-                        className="icon-rect"
-                        width="30"
-                        height="30"
-                        fill="url(#pattern3)"
-                      />
+                      <rect className="icon-rect" width="30" height="30" fill="url(#pattern3)" />
                       <defs>
-                        <pattern
-                          id="pattern3"
-                          patternContentUnits="objectBoundingBox"
-                          width="1"
-                          height="1"
-                        >
-                          <use
-                            xlinkHref="#image0_504:10"
-                            transform="scale(0.0333333)"
-                          />
+                        <pattern id="pattern3" patternContentUnits="objectBoundingBox" width="1" height="1">
+                          <use xlinkHref="#image0_504:10" transform="scale(0.0333333)" />
                         </pattern>
                         <image
                           id="image0_504:10"

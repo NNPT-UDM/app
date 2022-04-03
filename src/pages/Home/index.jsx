@@ -1,17 +1,39 @@
-import React from "react";
-import { Switch, Redirect, Route } from "react-router-dom";
-import Footer from "../../components/Footer";
-import Header from "../../components/Header";
-import PageNotFound from "../PageNotFound";
-import AboutFeature from "./features/About";
-import CartFeature from "./features/Cart";
-import CategoryFeature from "./features/Category";
-import ContactFeature from "./features/Contact";
-import FAQFeature from "./features/FAQ";
-import HomeFeature from "./features/Home";
-import ProductDetailFeature from "./features/ProductDetail";
-
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import PrivateRoute from '../../../PrivateRoute';
+import Footer from '../../components/Footer';
+import Header from '../../components/Header';
+import StorageKeys from '../../constants/storage-keys';
+import { getMe } from '../Login/userSlice';
+import AboutFeature from './features/About';
+import CartFeature from './features/Cart';
+import CategoryFeature from './features/Category';
+import ContactFeature from './features/Contact';
+import FAQFeature from './features/FAQ';
+import HomeFeature from './features/Home';
+import ProductDetailFeature from './features/ProductDetail';
+import ProfileFeature from './features/Profile';
+import Cookies from 'js-cookie';
 function Home(props) {
+  const isLoggedIn = !!Cookies.get(StorageKeys.TOKEN);
+  const dispatch = useDispatch();
+  const history = useHistory();
+  useEffect(() => {
+    (async () => {
+      if (isLoggedIn) {
+        try {
+          const resultAction = await dispatch(getMe());
+          unwrapResult(resultAction);
+        } catch (error) {
+          toast.error(error.message);
+          history.push('/');
+        }
+      }
+    })();
+  }, []);
   return (
     <>
       <Header />
@@ -19,6 +41,8 @@ function Home(props) {
         <Switch>
           <Route path="/" component={HomeFeature} exact />
           <Route path="/cart" component={CartFeature} exact />
+          <PrivateRoute path="/profile" component={ProfileFeature} exact />
+          {/* <Route path="/profile" component={ProfileFeature} exact /> */}
           <Route path="/about" component={AboutFeature} exact />
           <Route path="/category" component={CategoryFeature} exact />
           <Route path="/product" component={CategoryFeature} exact />
