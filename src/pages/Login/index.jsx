@@ -17,9 +17,11 @@ export default function Login() {
     try {
       const action = login(values);
       const resultAction = await dispatch(action);
+
       const user = await unwrapResult(resultAction);
       console.log(user);
       if (user.success !== 1) {
+        console.log(user.message);
         toast.error(user.message);
       }
       if (user.success === 1) {

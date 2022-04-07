@@ -8,9 +8,10 @@ Footer.propTypes = {};
 function Footer(props) {
   const { cartItems = [] } = useSelector((state) => state.cart);
   const pathname = usePathname();
-  if (pathname === '/cart' && cartItems.length === 0) {
+  if ((pathname === '/cart' && cartItems.length === 0) || pathname.includes('/product/')) {
     return <></>;
   }
+
   return (
     <footer className="footer-area">
       <div className="footer-main">

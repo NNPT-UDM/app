@@ -1,13 +1,38 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import HeaderAreaBig from '../../../../components/HeaderAreaBig';
-import AccountDetail from './components/AccoutDetail';
+import { logout } from '../../../Login/userSlice';
+import AccountDetail from './components/AccountDetail';
 import Address from './components/Address';
 import Dashboard from './components/Dashboard';
 import Orders from './components/Orders/Index';
+import PasswordChange from './components/PasswordChange';
+
 
 export default function ProfileFeature() {
+  const history = useHistory();
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.user.current);
+  //Handle logout
+  const handleLogout = async () => {
+    try {
+      const action = logout();
+      await dispatch(action);
+      history.push('/');
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+  //Handle Change Account Detail
+  const handleSubmitAccountDEtail = async (values) => {
+    console.log(values);
+    try {
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
   return (
     <>
       <HeaderAreaBig breadcrumb="My Account" title="My Account" />
@@ -66,17 +91,38 @@ export default function ProfileFeature() {
                 >
                   Account Details
                 </button>
-                <button className="nav-link" type="button">
+                <button
+                  className="nav-link"
+                  id="password-change-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#password-change"
+                  type="button"
+                  role="tab"
+                  aria-controls="password-change"
+                  aria-selected="false"
+                >
+                  Password Change
+                </button>
+                <button onClick={handleLogout} className="nav-link" type="button">
                   Logout
                 </button>
               </div>
             </div>
             <div className="col-lg-9 col-md-8">
               <div className="tab-content" id="nav-tabContent">
-                <Dashboard name="Alex Nguyen" />
+                <Dashboard name={user?.profile?.display_name} />
                 <Orders />
-                <Address />
-                <AccountDetail />
+                <Address
+                  name={user?.profile?.display_name}
+                  address={user?.profile?.contacts?.address}
+                  phone={user?.credential?.phone}
+                />
+                <AccountDetail
+                  email={user?.credential?.email}
+                  display_name={user?.profile?.display_name}
+                  onSubmit={handleSubmitAccountDEtail}
+                />
+                <PasswordChange />
               </div>
             </div>
           </div>

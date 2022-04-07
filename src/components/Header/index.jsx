@@ -7,9 +7,12 @@ import AsideSearch from '../AsideSearch';
 import NavMobile from '../NavMobile';
 import Cookies from 'js-cookie';
 import StorageKeys from '../../constants/storage-keys';
+import { useSelector } from 'react-redux';
+import { cartItemsCountSelector } from '../../pages/Home/features/Cart/selector';
 Header.propTypes = {};
 
 function Header(props) {
+  const cartItemsCount = useSelector(cartItemsCountSelector);
   const pathname = usePathname();
   const isLogin = Cookies.get(StorageKeys.TOKEN) ? true : false;
   return (
@@ -169,14 +172,16 @@ function Header(props) {
                   </span>
                 </button>
 
-                <button
-                  style={{ fontSize: 0 }}
-                  className="header-action-btn"
-                  type="button"
-                  data-bs-toggle="offcanvas"
-                  data-bs-target="#AsideOffcanvasCart"
-                  aria-controls="AsideOffcanvasCart"
-                >
+                <Link to="/cart" className="header-action-btn position-relative">
+                  {cartItemsCount ? (
+                    <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                      {cartItemsCount}
+                      <span className="visually-hidden">Cart count</span>
+                    </span>
+                  ) : (
+                    <></>
+                  )}
+
                   <span className="icon">
                     <svg
                       width="30"
@@ -200,7 +205,7 @@ function Header(props) {
                       </defs>
                     </svg>
                   </span>
-                </button>
+                </Link>
 
                 <Link className="header-action-btn" to={isLogin ? '/profile' : '/login'}>
                   <span className="icon">

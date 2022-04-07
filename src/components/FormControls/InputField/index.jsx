@@ -27,7 +27,7 @@ function InputField(props) {
             <label className="form-label">{label} </label>
             <input
               name={name}
-              value={value}
+              defaultValue={value}
               disabled={disable}
               onChange={onChange}
               className="form-control"

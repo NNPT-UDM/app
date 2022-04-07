@@ -1,6 +1,6 @@
-import StorageKeys from 'constants/storage-keys';
 import $ from 'jquery';
 import Cookies from 'js-cookie';
+import StorageKeys from '../constants/storage-keys';
 export function formatPrice(price) {
   return new Intl.NumberFormat('vi-VN', {
     style: 'currency',

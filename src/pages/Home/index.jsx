@@ -7,7 +7,7 @@ import PrivateRoute from '../../../PrivateRoute';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import StorageKeys from '../../constants/storage-keys';
-import { getMe } from '../Login/userSlice';
+import { getMe, logout } from '../Login/userSlice';
 import AboutFeature from './features/About';
 import CartFeature from './features/Cart';
 import CategoryFeature from './features/Category';
@@ -26,7 +26,6 @@ function Home(props) {
       if (isLoggedIn) {
         try {
           const resultAction = await dispatch(getMe());
-          unwrapResult(resultAction);
         } catch (error) {
           toast.error(error.message);
           history.push('/');
@@ -34,6 +33,7 @@ function Home(props) {
       }
     })();
   }, []);
+
   return (
     <>
       <Header />
@@ -45,8 +45,8 @@ function Home(props) {
           {/* <Route path="/profile" component={ProfileFeature} exact /> */}
           <Route path="/about" component={AboutFeature} exact />
           <Route path="/category" component={CategoryFeature} exact />
+          <Route path="/product/:productId" component={ProductDetailFeature} />
           <Route path="/product" component={CategoryFeature} exact />
-          <Route path="/product/:id" component={ProductDetailFeature} />
           <Route path="/faq" component={FAQFeature} exact />
           <Route path="/contact" component={ContactFeature} exact />
           <Redirect from="*" to="/404" />

@@ -1,8 +1,8 @@
-import productApi from 'api/productApi';
 import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import productApi from '../../../api/productApi';
 
-export default function useProductDetail(productId) {
+export default function useProductDetail(slug) {
   const [product, setProduct] = useState({});
   const [loading, setLoading] = useState(false);
   const history = useHistory();
@@ -10,15 +10,14 @@ export default function useProductDetail(productId) {
     (async () => {
       try {
         setLoading(true);
-        const result = await productApi.get(productId);
-      
+        const result = await productApi.get(slug);
+        if (!result.data) return history.push('/404');
         setProduct(result.data);
       } catch (error) {
-        // console.log('Fail to fetch product', error);
-        history.push('/shop');
+        history.push('/404');
       }
       setLoading(false);
     })();
-  }, [productId]);
+  }, [slug]);
   return { product, loading };
 }

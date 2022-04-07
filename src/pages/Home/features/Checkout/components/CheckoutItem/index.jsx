@@ -1,6 +1,6 @@
-import { STATIC_HOST, THUMBNAIL_PLACEHOLDER } from "constants/index";
-import React from "react";
-import { formatPrice } from "utils";
+import { STATIC_HOST, THUMBNAIL_PLACEHOLDER } from 'constants/index';
+import React from 'react';
+import { formatPrice } from 'utils';
 
 CheckoutItem.propTypes = {};
 
@@ -17,21 +17,21 @@ function CheckoutItem({ item = {} }) {
           <div className="container pt-1 py-1">
             <div className="col-sm-2">
               <div className="w-100 position-relative">
-                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                   9
                 </span>
                 <div
                   style={{
-                    overflow: "hidden",
-                    border: " 2px solid #d8a9a1",
+                    overflow: 'hidden',
+                    border: ' 2px solid #d8a9a1',
                     borderRadius: 2,
-                    width: "100%",
-                    height: "70px",
+                    width: '100%',
+                    height: '70px',
                   }}
                 >
                   <img
                     className="w-100 h-100"
-                    style={{ objectFit: "contain" }}
+                    style={{ objectFit: 'contain' }}
                     src={thumbnailURL}
                     alt={item.product.name}
                   />
@@ -53,9 +53,7 @@ function CheckoutItem({ item = {} }) {
             </div>
             <div className="col-sm-3">
               <div className="d-flex h-100 flex-column justify-content-center align-item-end">
-                <p variant="subtitle2">
-                  {formatPrice(item.product.price.sell * item.qty)}
-                </p>
+                <p variant="subtitle2">{formatPrice(item.product.price.sell * item.qty)}</p>
               </div>
             </div>
           </div>

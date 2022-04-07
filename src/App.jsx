@@ -1,7 +1,7 @@
 import { Redirect, Route, Switch } from 'react-router-dom';
 import PublicRoute from '../PublicRoute';
-// import { ToastContainer } from 'react-toastify';
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import PageNotFound from './pages/PageNotFound';
@@ -10,17 +10,17 @@ import SignUp from './pages/SignUp';
 function App() {
   return (
     <>
-      {/* <ToastContainer
+      <ToastContainer
         position="top-right"
         autoClose={5000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
         rtl={false}
-        pauseOnFocusLoss
+        pauseOnFocusLoss={false}
         draggable
         pauseOnHover
-      /> */}
+      />
       <Switch>
         <PublicRoute path="/login" component={Login} exact />
         <PublicRoute path="/sign-up" component={SignUp} exact />

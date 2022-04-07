@@ -1,19 +1,13 @@
-import React from "react";
-import ProductImg from "../../../../../../assets/images/shop/8.webp";
+import React from 'react';
+import ProductImg from '../../../../../../assets/images/shop/8.webp';
 
 export default function RelatedProductItem() {
   return (
     <div className="swiper-slide mb-10">
-      {/*== Start Product Item ==*/}
       <div className="product-item product-st2-item">
         <div className="product-thumb">
           <a className="d-block" href="product-details.html">
-            <img
-              src={ProductImg}
-              width={370}
-              height={450}
-              alt="Image-HasTech"
-            />
+            <img src={ProductImg} width={370} height={450} alt="Image-HasTech" />
           </a>
           <span className="flag-new">new</span>
         </div>

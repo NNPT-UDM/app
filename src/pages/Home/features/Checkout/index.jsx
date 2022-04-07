@@ -28,7 +28,7 @@ export default function CheckoutFeature() {
       >
         <div className="w-100 h-100 d-flex justify-align-content-center align-items-center">
           <i
-            class="fa fa-check"
+            className="fa fa-check"
             style={{ fontSize: "200px", fontWeight: "700", color: "#2ecc71" }}
           ></i>
 

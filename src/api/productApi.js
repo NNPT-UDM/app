@@ -1,6 +1,5 @@
-import { getLocalToken } from 'utils';
 import axiosClient from './axiosClient';
-
+import { getLocalToken } from '../utils';
 const productApi = {
   getListProduct() {
     const url = `/product/view`;
@@ -20,6 +19,7 @@ const productApi = {
   },
   get(id) {
     const url = `/product/view?slug=${id}`;
+
     return axiosClient.get(url, {
       headers: {
         Authorization: getLocalToken(), // headers token

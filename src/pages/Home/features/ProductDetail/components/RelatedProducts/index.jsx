@@ -1,7 +1,9 @@
-import React from "react";
-import RelatedProductItem from "../RelatedProductItem";
+import React from 'react';
+import useScript from '../../../../../../hooks/useScript';
+import RelatedProductItem from '../RelatedProductItem';
 
 export default function RelatedProducts() {
+  useScript();
   return (
     <section className="section-space">
       <div className="container">
@@ -10,8 +12,8 @@ export default function RelatedProducts() {
             <div className="section-title">
               <h2 className="title">Related Products</h2>
               <p className="m-0">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
-                aliquam, purus sit amet luctus venenatis
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus
+                venenatis
               </p>
             </div>
           </div>
@@ -20,7 +22,6 @@ export default function RelatedProducts() {
           <div className="col-12">
             <div className="swiper related-product-slide-container">
               <div className="swiper-wrapper">
-                <RelatedProductItem />
                 <RelatedProductItem />
                 <RelatedProductItem />
                 <RelatedProductItem />
