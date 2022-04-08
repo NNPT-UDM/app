@@ -1,7 +1,5 @@
-import { FormControl, FormHelperText, InputLabel, MenuItem, Select } from '@mui/material';
 import React from 'react';
 import { Controller } from 'react-hook-form';
-import PropTypes from 'prop-types';
 
 function SelectAddress(props) {
   const { form, name, label, disable, codeValues = [] } = props;
@@ -15,7 +13,14 @@ function SelectAddress(props) {
         <>
           <div className="form-group">
             <label className="form-label">{label} </label>
-            <select name={name} value={value} disabled={disable} onChange={onChange} className="form-control">
+            <select
+              name={name}
+              defaultValue={value}
+              disabled={disable}
+              onChange={onChange}
+              className="form-select"
+            >
+              <option value="">--Please choose {name}--</option>
               {codeValues.map((value) => {
                 return (
                   <option key={value.code} value={value.code}>

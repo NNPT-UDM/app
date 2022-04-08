@@ -17,6 +17,7 @@ import HomeFeature from './features/Home';
 import ProductDetailFeature from './features/ProductDetail';
 import ProfileFeature from './features/Profile';
 import Cookies from 'js-cookie';
+import CheckoutFeature from './features/Checkout';
 function Home(props) {
   const isLoggedIn = !!Cookies.get(StorageKeys.TOKEN);
   const dispatch = useDispatch();
@@ -45,6 +46,7 @@ function Home(props) {
           {/* <Route path="/profile" component={ProfileFeature} exact /> */}
           <Route path="/about" component={AboutFeature} exact />
           <Route path="/category" component={CategoryFeature} exact />
+          <Route path="/checkout/:cartId" component={CheckoutFeature} />
           <Route path="/product/:productId" component={ProductDetailFeature} />
           <Route path="/product" component={CategoryFeature} exact />
           <Route path="/faq" component={FAQFeature} exact />

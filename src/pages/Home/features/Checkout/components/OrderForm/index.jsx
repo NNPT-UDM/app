@@ -1,32 +1,34 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import InputField from 'components/form-controls/InputField';
-
-import { useSnackbar } from 'notistack';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import * as yup from 'yup';
+import InputField from '../../../../../../components/FormControls/InputField';
 import CheckoutItem from '../CheckoutItem';
-import SelectAddress from '../SelectProvince';
 
+import addressApi from '../../../../../../api/addressApi';
+import SelectAddress from '../SelectProvince';
+import TopLinearProgress from '../../../../../../components/TopLinearProgress';
 OrderForm.propTypes = {};
 
 function OrderForm(props) {
   const { cartItems = [] } = useSelector((state) => state.cart);
   const [provinces, setProvinces] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [districts, setDistricts] = useState([]);
   const [wards, setWards] = useState([]);
-  const { enqueueSnackbar } = useSnackbar();
+
   // const [provinces, setProvinces] = useState([]);
   const schema = yup.object().shape({
-    full_name: yup.string().required('Vui lòng nhập tên'),
-    email: yup.string().required('Vui lòng nhập email').email('Vui lòng nhập email đúng định dạng.'),
-    phone: yup.string().required('Vui lòng nhâp số điện thoại'),
-    description: yup.string().required('Vui lòng nhập địa chỉ'),
-    province: yup.string().required('Vui lòng chọn Thành Phố/Tỉnh'),
-    district: yup.string().required('Vui lòng chọ Quận/Huyện'),
-    ward: yup.string().required('Vui lòng chọn Phường/Xã'),
+    full_name: yup.string().required('Please enter name'),
+    email: yup.string().required('Please enter email').email('Email invalidate'),
+    phone: yup.string().required('Please enter phone'),
+    description: yup.string().required('Please choose address'),
+    province: yup.string().required('Please choose address province'),
+    district: yup.string().required('Please choose address district'),
+    ward: yup.string().required('Please choose address ward'),
   });
   const form = useForm({
     defaultValues: {
@@ -37,7 +39,6 @@ function OrderForm(props) {
       province: '',
       district: '',
       ward: '',
-      note: '',
     },
     resolver: yupResolver(schema),
   });
@@ -48,8 +49,9 @@ function OrderForm(props) {
         const result = await addressApi.getProvinces();
         setProvinces(result);
       } catch (error) {
-        enqueueSnackbar(error.message, { variant: 'error' });
+        toast.success(error.message);
       }
+      setLoading(false);
     })();
   }, []);
   const province = form.watch('province');
@@ -70,7 +72,7 @@ function OrderForm(props) {
 
           setDistricts(result.districts);
         } catch (error) {
-          enqueueSnackbar(error.message, { variant: 'error' });
+          toast.success(error.message);
         }
       }
     })();
@@ -88,7 +90,7 @@ function OrderForm(props) {
 
           setWards(result.wards);
         } catch (error) {
-          enqueueSnackbar(error.message, { variant: 'error' });
+          toast.success(error.message);
         }
       }
     })();
@@ -96,6 +98,7 @@ function OrderForm(props) {
 
   const handleSubmit = async (values) => {
     const { onSubmit } = props;
+
     if (onSubmit) {
       await onSubmit(values);
     }
@@ -103,31 +106,35 @@ function OrderForm(props) {
   //   const { isSubmitting } = form.formState;
   return (
     <>
-      <form onSubmit={form.handleSubmit(handleSubmit)}>
-        <div className="row" style={{ gap: '10px' }}>
-          <div className="col-12 col-md-7">
-            <InputField name="full_name" label="Tên" form={form} />
-            <InputField name="email" label="Email" form={form} />
-            <InputField name="phone" label="Số điện thoại" form={form} />
-            <InputField name="description" label="Địa chỉ" form={form} />
-            <SelectAddress name="province" codeValues={provinces} label="Thành Phố/Tỉnh" form={form} />
-            <SelectAddress name="district" codeValues={districts} label="Quận/Huyện" form={form} />
-            <SelectAddress name="ward" codeValues={wards} label="Phường/Xã" form={form} />
-          </div>
-          <div className="col-12 col-md-5">
-            <div style={{ maxHeight: '700px', overflowY: 'scroll' }}>
-              {cartItems.map((item, index) => {
-                return <CheckoutItem item={item} key={index} />;
-              })}
+      {!loading ? (
+        <form onSubmit={form.handleSubmit(handleSubmit)}>
+          <div className="row">
+            <div className="col-12 col-md-7">
+              <InputField name="full_name" label="Name" form={form} />
+              <InputField name="email" label="Email" form={form} />
+              <InputField name="phone" label="Phone" form={form} />
+              <InputField name="description" label="Address" form={form} />
+              <SelectAddress name="province" codeValues={provinces} label="Province" form={form} />
+              <SelectAddress name="district" codeValues={districts} label="District" form={form} />
+              <SelectAddress name="ward" codeValues={wards} label="Ward" form={form} />
             </div>
-            <div className="py-1">
-              <button className="btn  w-100" type="submit">
-                Order
-              </button>
+            <div className="col-12 col-md-5">
+              <div className="">
+                {cartItems?.map((item, index) => {
+                  return <CheckoutItem item={item} key={item.id} />;
+                })}
+              </div>
+              <div className="py-1">
+                <button type="submit" className="btn w-100 rounded">
+                  Order
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      </form>
+        </form>
+      ) : (
+        <></>
+      )}
     </>
   );
 }

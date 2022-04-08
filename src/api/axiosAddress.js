@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { API_ADDRESS } from 'constants/index';
+import { API_ADDRESS } from '../constants';
 
 const axiosAddress = axios.create({
   baseURL: `${API_ADDRESS}`,

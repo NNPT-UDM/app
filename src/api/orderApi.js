@@ -1,4 +1,4 @@
-import { getLocalToken } from 'utils';
+import { getLocalToken } from '../utils';
 import axiosClient from './axiosClient';
 
 const orderApi = {

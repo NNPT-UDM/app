@@ -19,7 +19,7 @@ function CartItem({ item = {} }) {
   };
   return (
     <>
-      <div className="card">
+      <div className="card mb-2">
         <div className="p-2 row">
           <div className="col-3">
             <div
@@ -53,16 +53,19 @@ function CartItem({ item = {} }) {
             <QuantityItem cartItem={item} />
           </div>
           <div className="col-3">
-            <div className="h-100 d-flex flex-column justify-content-between align-item-end">
-              <button style={{ width: '1.5rem',  height:"" }} onClick={handleDeleteCartItem}>
-                <i class="fa fa-times"></i>
+            <div className="h-100 d-flex flex-column justify-content-between align-items-end">
+              <button
+                className="btn p-0 d-flex justify-content-center align-items-center bg-transparent"
+                style={{ width: '1.8rem', height: '1.8rem', letterSpacing: 0 }}
+                onClick={handleDeleteCartItem}
+              >
+                <i className="fa fa-times text-primary" style={{ fontSize: '1.5rem' }}></i>
               </button>
               <p className="h6 text-end">${item.product.price.sell * item.qty}</p>
             </div>
           </div>
         </div>
       </div>
-      <hr className="dropdown-divider" />
     </>
   );
 }

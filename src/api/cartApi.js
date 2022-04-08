@@ -1,5 +1,5 @@
-import { getLocalToken } from "utils";
-import axiosClient from "./axiosClient";
+import { getLocalToken } from '../utils';
+import axiosClient from './axiosClient';
 
 const cartApi = {
   addCart(data) {

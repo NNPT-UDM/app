@@ -1,4 +1,4 @@
-import cartApi from 'api/cartApi';
+import cartApi from '../../../api/cartApi';
 import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
@@ -13,13 +13,13 @@ export default function useCart(cartId) {
         const result = await cartApi.get(cartId);
         // console.log(result);
         if (!result.data.items) {
-          history.push('/shop');
+          history.push('/cart');
           setCart({});
         } else {
           setCart(result.data.items);
         }
       } catch (error) {
-        history.push('/shop');
+        history.push('/cart');
       }
       setLoading(false);
     })();
