@@ -11,7 +11,7 @@ export default function ProductItem({ product = {} }) {
   const values = {
     products: product?._id,
     info: product,
-    qty: '1',
+    qty: 1,
   };
   const handleSubmit = () => {
     const action = addToCart(values);

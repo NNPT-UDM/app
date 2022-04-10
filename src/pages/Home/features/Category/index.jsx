@@ -15,12 +15,12 @@ export default function CategoryFeature() {
   const { listProduct, loading } = useCategory(categoryId);
   
   return (
-    <div className='loadn'>
+    <>
       <HeaderAreaBig breadcrumb="Products" title="All Product" />
       <CategoryArea />
       <FilterArea />
       <ListProduct listProduct={listProduct} loading={loading} />
       <BannerArea />
-    </div>
+    </>
   );
 }
