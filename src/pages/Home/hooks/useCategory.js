@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import categoryApi from '../../../api/categoryApi';
 
 export default function useCategory(slug) {
-  const [product, setProduct] = useState({});
+  const [listProduct, setListProduct] = useState({});
   const [loading, setLoading] = useState(false);
   const history = useHistory();
   useEffect(() => {
@@ -12,12 +12,12 @@ export default function useCategory(slug) {
         setLoading(true);
         const result = await categoryApi.get(slug);
         if (!result.data) return history.push('/404');
-        setProduct(result.data);
+        setListProduct(result.data.products);
       } catch (error) {
         history.push('/404');
       }
       setLoading(false);
     })();
   }, [slug]);
-  return { product, loading };
+  return { listProduct, loading };
 }

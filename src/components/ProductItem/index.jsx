@@ -1,10 +1,22 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Shop1 from '../../assets/images/shop/1.webp';
 import { STATIC_HOST } from '../../constants';
+import { addToCart } from '../../pages/Home/features/Cart/cartSlice';
 import { isEmptyObj } from '../../utils';
 export default function ProductItem({ product = {} }) {
-  console.log(product);
+  const dispatch = useDispatch();
+
+  const values = {
+    products: product?._id,
+    info: product,
+    qty: '1',
+  };
+  const handleSubmit = () => {
+    const action = addToCart(values);
+    dispatch(action);
+  };
   return (
     <div className="col-6 col-lg-4 mb-4 mb-sm-9">
       <div className="product-item">
@@ -21,14 +33,9 @@ export default function ProductItem({ product = {} }) {
               />
             )}
           </Link>
-          <span className="flag-new">new</span>
+          {/* <span className="flag-new">new</span> */}
           <div className="product-action">
-            <button
-              type="button"
-              className="product-action-btn action-btn-cart"
-              data-bs-toggle="modal"
-              data-bs-target="#action-CartAddModal"
-            >
+            <button type="button" className="product-action-btn action-btn-cart" onClick={handleSubmit}>
               <span>Add to cart</span>
             </button>
           </div>
@@ -53,12 +60,7 @@ export default function ProductItem({ product = {} }) {
           </div>
         </div>
         <div className="product-action-bottom">
-          <button
-            type="button"
-            className="product-action-btn action-btn-cart"
-            data-bs-toggle="modal"
-            data-bs-target="#action-CartAddModal"
-          >
+          <button onClick={handleSubmit} type="button" className="product-action-btn action-btn-cart">
             <span>Add to cart</span>
           </button>
         </div>

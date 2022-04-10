@@ -23,7 +23,6 @@ export default function ProductDetailFeature() {
   console.log(product);
   const handleSubmit = (values) => {
     const action = addToCart(values);
-
     dispatch(action);
   };
   return (
