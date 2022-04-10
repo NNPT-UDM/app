@@ -18,8 +18,7 @@ const cartSlice = createSlice({
     },
     addToCart(state, action) {
       const newItem = action.payload;
-      // console.log(newItem, 'newItem');
-      const index = state.cartItems.findIndex((x) => x._id === newItem._id && x.size === newItem.size);
+      const index = state.cartItems.findIndex((x) => x.products === newItem.products);
       if (index >= 0) {
         state.cartItems[index].qty += newItem.qty;
       } else {
@@ -29,8 +28,8 @@ const cartSlice = createSlice({
       toast.success('Add product success');
     },
     setQuantity(state, action) {
-      const { id, qtyItem } = action.payload;
-      const index = state.cartItems.findIndex((x) => x.id === id);
+      const { products, qtyItem } = action.payload;
+      const index = state.cartItems.findIndex((x) => x.products === products);
       // console.log(index);
       if (index >= 0) {
         state.cartItems[index].qty = qtyItem;
@@ -40,7 +39,7 @@ const cartSlice = createSlice({
     },
     removeFormCart(state, action) {
       const idNeedRemove = action.payload;
-      state.cartItems = state.cartItems.filter((x) => x.id !== idNeedRemove);
+      state.cartItems = state.cartItems.filter((x) => x.products !== idNeedRemove);
       localStorage.setItem(StorageKeys.CART, JSON.stringify(state.cartItems));
       toast.success('Remove product success');
     },

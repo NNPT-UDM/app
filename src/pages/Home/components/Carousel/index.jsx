@@ -1,13 +1,14 @@
-import React from "react";
-import PropTypes from "prop-types";
-import TextTheme from "../../../../assets/images/slider/text-theme.webp";
-import Text1 from "../../../../assets/images/slider/text1.webp";
-import Slider1 from "../../../../assets/images/slider/slider1.webp";
-import Slider2 from "../../../../assets/images/slider/slider2.webp";
+import React from 'react';
+import PropTypes from 'prop-types';
+import TextTheme from '../../../../assets/images/slider/text-theme.webp';
+import Text1 from '../../../../assets/images/slider/text1.webp';
+import Slider1 from '../../../../assets/images/slider/slider1.webp';
+import Slider2 from '../../../../assets/images/slider/slider2.webp';
 
 Carousel.propTypes = {};
 
 function Carousel(props) {
+  console.log('render carousel');
   return (
     <section className="hero-slider-area position-relative">
       <div className="swiper hero-slider-container">
@@ -18,17 +19,12 @@ function Carousel(props) {
                 <div className="col-12 col-md-6">
                   <div className="hero-slide-content">
                     <div className="hero-slide-text-img">
-                      <img
-                        src={TextTheme}
-                        width="427"
-                        height="232"
-                        alt="Image"
-                      />
+                      <img src={TextTheme} width="427" height="232" alt="Image" />
                     </div>
                     <h2 className="hero-slide-title">CLEAN FRESH</h2>
                     <p className="hero-slide-desc">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
-                      aliquam, purus sit amet luctus venenatis.
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet
+                      luctus venenatis.
                     </p>
                     <a className="btn btn-border-dark" href="product.html">
                       BUY NOW
@@ -53,17 +49,12 @@ function Carousel(props) {
                 <div className="col-12 col-md-6">
                   <div className="hero-slide-content">
                     <div className="hero-slide-text-img">
-                      <img
-                        src={TextTheme}
-                        width="427"
-                        height="232"
-                        alt="Image"
-                      />
+                      <img src={TextTheme} width="427" height="232" alt="Image" />
                     </div>
                     <h2 className="hero-slide-title">Facial Cream</h2>
                     <p className="hero-slide-desc">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
-                      aliquam, purus sit amet luctus venenatis.
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet
+                      luctus venenatis.
                     </p>
                     <a className="btn btn-border-dark" href="product.html">
                       BUY NOW
@@ -72,23 +63,13 @@ function Carousel(props) {
                 </div>
                 <div className="col-12 col-md-6">
                   <div className="hero-slide-thumb">
-                    <img
-                      src={Slider2}
-                      width="841"
-                      height="832"
-                      alt="Image"
-                    />
+                    <img src={Slider2} width="841" height="832" alt="Image" />
                   </div>
                 </div>
               </div>
             </div>
             <div className="hero-slide-text-shape">
-              <img
-                src={Text1}
-                width="70"
-                height="955"
-                alt="Image"
-              />
+              <img src={Text1} width="70" height="955" alt="Image" />
             </div>
             <div className="hero-slide-social-shape"></div>
           </div>
@@ -111,4 +92,4 @@ function Carousel(props) {
   );
 }
 
-export default Carousel;
+export default React.memo(Carousel);

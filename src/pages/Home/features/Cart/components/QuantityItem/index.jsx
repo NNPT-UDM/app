@@ -4,21 +4,21 @@ import { setQuantity } from '../../cartSlice';
 QuantityItem.propTypes = {};
 
 function QuantityItem({ cartItem }) {
-  const { id, qty } = cartItem;
+  const { products, qty } = cartItem;
   const [qtyItem, setQtyItem] = useState(qty);
   const dispatch = useDispatch();
   function handleChange() {
-    dispatch(setQuantity(id, qtyItem));
+    dispatch(setQuantity(products, qtyItem));
   }
   const handleDes = () => {
     setQtyItem(Number.parseInt(qtyItem) ? Number.parseInt(qtyItem) - 1 : 1);
     const number = Number.parseInt(qtyItem) ? Number.parseInt(qtyItem) - 1 : 1;
-    const action = { id, qtyItem: number };
+    const action = { products, qtyItem: number };
     dispatch(setQuantity(action));
   };
   const handleIns = () => {
     const number = Number.parseInt(qtyItem) ? Number.parseInt(qtyItem) + 1 : 1;
-    const action = { id, qtyItem: number };
+    const action = { products, qtyItem: number };
     setQtyItem(Number.parseInt(qtyItem) ? Number.parseInt(qtyItem) + 1 : 1);
     dispatch(setQuantity(action));
   };

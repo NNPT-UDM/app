@@ -121,7 +121,7 @@ function OrderForm(props) {
             <div className="col-12 col-md-5">
               <div className="">
                 {cartItems?.map((item, index) => {
-                  return <CheckoutItem item={item} key={item.id} />;
+                  return <CheckoutItem item={item} key={item.products} />;
                 })}
               </div>
               <div className="py-1">

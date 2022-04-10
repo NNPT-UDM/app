@@ -10,12 +10,12 @@ CartItem.propTypes = {};
 
 function CartItem({ item = {} }) {
   const dispatch = useDispatch();
-  const thumbnailURL = item.product?.photo
-    ? `${STATIC_HOST}/${item.product.photo?.fieldname}/${item.product.photo?.filename}`
+  const thumbnailURL = item.info?.photo
+    ? `${STATIC_HOST}/${item.info.photo?.fieldname}/${item.info.photo?.filename}`
     : THUMBNAIL_PLACEHOLDER;
 
   const handleDeleteCartItem = async () => {
-    await dispatch(removeFormCart(item.id));
+    await dispatch(removeFormCart(item.products));
   };
   return (
     <>
@@ -34,22 +34,14 @@ function CartItem({ item = {} }) {
               <img
                 style={{ objectFit: 'cover', height: '100%' }}
                 src={thumbnailURL}
-                alt={item.product.name}
+                alt={item?.info?.name}
                 width="100%"
               />
             </div>
           </div>
           <div className="px-1 col-6">
-            <p className="h5">{item.product.name}</p>
-            <p className="mb-1">${item.product.price.sell}</p>
-            {item.size ? (
-              <div className="mb-1 h6">
-                Size:
-                <span>{item.size}</span>
-              </div>
-            ) : (
-              <></>
-            )}
+            <p className="h5">{item?.info?.name}</p>
+            <p className="mb-1">${item?.info?.price?.sell}</p>
             <QuantityItem cartItem={item} />
           </div>
           <div className="col-3">
@@ -61,7 +53,7 @@ function CartItem({ item = {} }) {
               >
                 <i className="fa fa-times text-primary" style={{ fontSize: '1.5rem' }}></i>
               </button>
-              <p className="h6 text-end">${item.product.price.sell * item.qty}</p>
+              <p className="h6 text-end">${item?.info?.price?.sell * item?.qty}</p>
             </div>
           </div>
         </div>

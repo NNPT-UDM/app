@@ -5,8 +5,8 @@ import { STATIC_HOST, THUMBNAIL_PLACEHOLDER } from '../../../../../../constants'
 CheckoutItem.propTypes = {};
 
 function CheckoutItem({ item = {} }) {
-  const thumbnailURL = item.product?.photo
-    ? `${STATIC_HOST}/${item.product.photo?.fieldname}/${item.product.photo?.filename}`
+  const thumbnailURL = item.info?.photo
+    ? `${STATIC_HOST}/${item.info.photo?.fieldname}/${item.info.photo?.filename}`
     : THUMBNAIL_PLACEHOLDER;
   // console.log(item);
 
@@ -33,14 +33,14 @@ function CheckoutItem({ item = {} }) {
                     className="w-100 h-100"
                     style={{ objectFit: 'contain' }}
                     src={thumbnailURL}
-                    alt={item.product.name}
+                    alt={item.info.name}
                   />
                 </div>
               </div>
             </div>
             <div className="col-6">
-              <p className="textTwoLine">{item.product.name}</p>
-              <p className="d-block">${item.product.price.sell * item.qty}</p>
+              <p className="textTwoLine">{item.info.name}</p>
+              <p className="d-block">${item.info.price.sell * item.qty}</p>
             </div>
           </div>
         </div>

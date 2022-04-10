@@ -17,8 +17,8 @@ export default function Detail({ product, onSubmit }) {
 
   const form = useForm({
     defaultValues: {
-      id: product._id,
-      product,
+      products: product._id,
+      info: product,
       qty: '1',
     },
     resolver: yupResolver(schema),

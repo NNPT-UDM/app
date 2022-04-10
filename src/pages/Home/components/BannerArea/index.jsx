@@ -1,7 +1,7 @@
-import React from "react";
-import BannerItem from "../BannerItem";
+import React from 'react';
+import BannerItem from '../BannerItem';
 
-export default function BannerArea() {
+export default React.memo(function BannerArea() {
   return (
     <section>
       <div className="container">
@@ -13,4 +13,4 @@ export default function BannerArea() {
       </div>
     </section>
   );
-}
+});

@@ -1,23 +1,23 @@
+import Cookies from 'js-cookie';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import PrivateRoute from '../../../PrivateRoute';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import StorageKeys from '../../constants/storage-keys';
-import { getMe, logout } from '../Login/userSlice';
+import { getMe } from '../Login/userSlice';
 import AboutFeature from './features/About';
 import CartFeature from './features/Cart';
 import CategoryFeature from './features/Category';
+import CheckoutFeature from './features/Checkout';
 import ContactFeature from './features/Contact';
 import FAQFeature from './features/FAQ';
 import HomeFeature from './features/Home';
 import ProductDetailFeature from './features/ProductDetail';
 import ProfileFeature from './features/Profile';
-import Cookies from 'js-cookie';
-import CheckoutFeature from './features/Checkout';
+import './styles.scss';
 function Home(props) {
   const isLoggedIn = !!Cookies.get(StorageKeys.TOKEN);
   const dispatch = useDispatch();
@@ -45,7 +45,7 @@ function Home(props) {
           <PrivateRoute path="/profile" component={ProfileFeature} exact />
           {/* <Route path="/profile" component={ProfileFeature} exact /> */}
           <Route path="/about" component={AboutFeature} exact />
-          <Route path="/category" component={CategoryFeature} exact />
+          <Route path="/category/:categoryId" component={CategoryFeature} exact />
           <Route path="/checkout/:cartId" component={CheckoutFeature} />
           <Route path="/product/:productId" component={ProductDetailFeature} />
           <Route path="/product" component={CategoryFeature} exact />

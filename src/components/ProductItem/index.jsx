@@ -1,13 +1,26 @@
-import React from "react";
-import Shop1 from "../../assets/images/shop/1.webp";
-export default function ProductItem() {
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Shop1 from '../../assets/images/shop/1.webp';
+import { STATIC_HOST } from '../../constants';
+import { isEmptyObj } from '../../utils';
+export default function ProductItem({ product = {} }) {
+  console.log(product);
   return (
     <div className="col-6 col-lg-4 mb-4 mb-sm-9">
       <div className="product-item">
         <div className="product-thumb">
-          <a className="d-block" href="product-details.html">
-            <img src={Shop1} width="370" height="450" alt="Image-HasTech" />
-          </a>
+          <Link className="d-block" to={`/product/${product?.slug}` || ''}>
+            {isEmptyObj(product) ? (
+              <img src={Shop1} width="370" height="450" alt={product?.name || 'Image-HasTech'} />
+            ) : (
+              <img
+                src={Shop1 && `${STATIC_HOST}/${product?.photo?.fieldname}/${product?.photo?.filename}`}
+                width="370"
+                height="450"
+                alt={product?.name || 'Image-HasTech'}
+              />
+            )}
+          </Link>
           <span className="flag-new">new</span>
           <div className="product-action">
             <button
@@ -32,11 +45,11 @@ export default function ProductItem() {
             <div className="reviews">150 reviews</div>
           </div>
           <h4 className="title">
-            <a href="product-details.html">Readable content DX22</a>
+            <a href="product-details.html">{product?.name || 'Readable content DX22'}</a>
           </h4>
           <div className="prices">
-            <span className="price">$210.00</span>
-            <span className="price-old">300.00</span>
+            <span className="price">${product?.price?.sell || '210.00'}</span>
+            {/* <span className="price-old">300.00</span> */}
           </div>
         </div>
         <div className="product-action-bottom">

@@ -24,7 +24,7 @@ export default function CartFeature() {
           <div className="row">
             <div className="col-12 col-md-8">
               {cartItems.map((item) => {
-                return <CartItem key={item.id} item={item} />;
+                return <CartItem key={item.products} item={item} />;
               })}
             </div>
             <TotalCart cartItems={cartItems}/>

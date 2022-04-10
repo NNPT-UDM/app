@@ -19,16 +19,24 @@ export default function TotalCart({ cartItems }) {
       console.log(cartId);
       if (!cartId) {
         const result = await cartApi.addCart(action);
-        console.log(result);
+        if (result.success === 0) {
+          toast.error(result.message);
+          history.push(`/login`);
+        }
         localStorage.setItem(StorageKeys.CART_ID, result.data?.id);
         history.push(`/checkout/${result.data?.id}`);
       } else {
         const result = await cartApi.editCart(cartId, JSON.stringify(action));
-
         history.push(`/checkout/${result.data?.id}`);
       }
     } catch (error) {
-      toast.error(error);
+      if (error.response.status === 403) {
+        toast.error('Please login');
+        history.push(`/login`);
+      }
+      if (error.response.status !== 403) {
+        toast.error(error.message);
+      }
     }
   }
   return (
